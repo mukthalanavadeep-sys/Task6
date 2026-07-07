@@ -2,17 +2,19 @@
 
 ## Project Overview
 
-This project focuses on analyzing sales trends using SQL queries.
+This project focuses on analyzing online sales data using SQL.
 
-The main objective of this task is to analyze monthly revenue and order volume from an online sales dataset by applying SQL concepts such as date extraction, aggregation, grouping, filtering, and sorting.
+The objective of this task is to perform sales trend analysis by calculating monthly revenue and order volume. SQL queries are used to extract months from dates, group sales data by year and month, calculate total revenue using aggregation functions, count unique orders, sort results, and filter data for specific time periods.
 
----
+The analysis helps in understanding sales patterns and identifying trends from transaction data.
 
-## Dataset Information
+
+
+## Dataset
 
 **Dataset Name:** Online Sales Data
 
-The dataset contains online transaction details including:
+The dataset contains transaction details including:
 
 - Transaction ID
 - Date
@@ -33,205 +35,57 @@ The dataset contains online transaction details including:
 
 ---
 
-## Objective
+## SQL Concepts Used
 
-The objective of this project is to:
+The following SQL concepts were applied:
 
-- Analyze sales performance over time.
-- Calculate monthly revenue.
-- Calculate order volume.
-- Identify sales trends.
-- Filter sales data for specific time periods.
-- Sort results for better analysis.
+- SELECT statements
+- Date conversion using STR_TO_DATE()
+- EXTRACT()
+- YEAR() and MONTH()
+- GROUP BY
+- SUM()
+- COUNT(DISTINCT)
+- ORDER BY
+- WHERE clause
 
----
 
-# SQL Analysis Performed
+## Analysis Performed
 
-## 1. Extract Month from Date
+### 1. Monthly Analysis
 
-### Concept Used:
-`EXTRACT(MONTH FROM order_date)`
+Extracted month values from transaction dates to understand monthly sales patterns.
 
-### Purpose:
-To extract the month value from transaction dates and analyze monthly sales patterns.
+### 2. Year and Month Grouping
 
-### Query:
+Grouped sales records based on year and month to analyze sales trends over time.
 
-```sql
-SELECT
-    EXTRACT(MONTH FROM STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Month
-FROM `online sales data`;
-```
+### 3. Revenue Calculation
 
----
+Used the SUM() function to calculate total and monthly revenue.
 
-# 2. Group Data by Year and Month
+### 4. Order Volume Calculation
 
-### Concept Used:
-`GROUP BY`
+Used COUNT(DISTINCT Transaction ID) to calculate the number of unique orders.
 
-### Purpose:
-To group sales transactions based on year and month for trend analysis.
+### 5. Sorting Results
 
-### Query:
+Used ORDER BY to arrange sales results based on revenue values.
 
-```sql
-SELECT
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Year,
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Month,
-    COUNT(*) AS Records
-FROM `online sales data`
-GROUP BY
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')),
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d'));
-```
+### 6. Time Period Filtering
 
----
+Used WHERE conditions to analyze sales data for specific time periods.
 
-# 3. Calculate Total Revenue
 
-### Concept Used:
-`SUM()`
 
-### Purpose:
-To calculate the total revenue generated from sales transactions.
+## Key Insights
 
-### Query:
+- Monthly revenue trends were identified from sales transactions.
+- Order volume was calculated to understand sales activity.
+- Sales performance was analyzed across different months.
+- SQL aggregation and filtering helped extract meaningful business insights.
 
-```sql
-SELECT
-    SUM(`Total Revenue`) AS Total_Revenue
-FROM `online sales data`;
-```
 
----
+## Conclusion
 
-# 4. Calculate Order Volume
-
-### Concept Used:
-`COUNT(DISTINCT)`
-
-### Purpose:
-To calculate the number of unique orders.
-
-### Query:
-
-```sql
-SELECT
-    COUNT(DISTINCT `Transaction ID`) AS Order_Volume
-FROM `online sales data`;
-```
-
----
-
-# 5. Sort Data Using ORDER BY
-
-### Concept Used:
-`ORDER BY`
-
-### Purpose:
-To sort sales records based on revenue values.
-
-### Query:
-
-```sql
-SELECT
-    `Transaction ID`,
-    `Total Revenue`
-FROM `online sales data`
-ORDER BY `Total Revenue` DESC;
-```
-
----
-
-# 6. Filter Results for Specific Time Periods
-
-### Concept Used:
-`WHERE`
-
-### Purpose:
-To analyze sales data for a specific time period.
-
-Example:
-Showing sales from January to June.
-
-### Query:
-
-```sql
-SELECT
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Year,
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Month,
-    SUM(`Total Revenue`) AS Monthly_Revenue
-FROM `online sales data`
-WHERE MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d')) BETWEEN 1 AND 6
-GROUP BY
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')),
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d'))
-ORDER BY Year, Month;
-```
-
----
-
-# Final Sales Trend Analysis Query
-
-This query combines all major concepts:
-
-- Year and month grouping
-- Monthly revenue calculation
-- Order volume calculation
-- Sorting results
-
-```sql
-SELECT
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Year,
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d')) AS Month,
-    SUM(`Total Revenue`) AS Monthly_Revenue,
-    COUNT(DISTINCT `Transaction ID`) AS Order_Volume
-FROM `online sales data`
-GROUP BY
-    YEAR(STR_TO_DATE(`Date`, '%Y-%m-%d')),
-    MONTH(STR_TO_DATE(`Date`, '%Y-%m-%d'))
-ORDER BY Year, Month;
-```
-
----
-
-# Key Insights
-
-- Monthly sales trends were analyzed using SQL.
-- Revenue patterns were identified using aggregation functions.
-- Order volume was calculated using unique transaction IDs.
-- Time-based filtering helped analyze selected periods.
-- Sorting helped arrange results for better understanding.
-
----
-
-# Project Structure
-
-```
-Task-6-Sales-Trend-Analysis
-│
-├── README.md
-│
-├── task6_sales_trend_analysis.sql
-│
-├── Online Sales Data.csv
-│
-└── Screenshots
-    │
-    ├── extract_month.png
-    ├── group_by_year_month.png
-    ├── sum_revenue.png
-    ├── count_order_volume.png
-    ├── order_by_sorting.png
-    └── time_period_filter.png
-```
-
----
-
-# Conclusion
-
-This project demonstrates how SQL can be used for sales trend analysis.
-
-By applying date functions, aggregation functions, GROUP BY, ORDER BY, and filtering techniques, meaningful insights were extracted from online sales transaction data.
+This project demonstrates the use of SQL for sales trend analysis. By applying date functions, aggregation functions, grouping, sorting, and filtering techniques, valuable insights were extracted from online sales transaction data.
