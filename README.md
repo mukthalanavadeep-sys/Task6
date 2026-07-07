@@ -1,22 +1,68 @@
-# Task 6 - Sales Trend Analysis Using Aggregations
+# Task 6: Sales Trend Analysis Using SQL
 
-## Objective
-Analyze monthly revenue and order volume using SQL aggregate functions.
+## Project Overview
+
+This project focuses on analyzing sales trends using SQL.  
+The objective is to analyze monthly revenue and order volume from an online sales dataset by applying SQL aggregation, grouping, filtering, and sorting techniques.
+
+## Dataset
+
+**Dataset Name:** Online Sales Data
+
+The dataset contains sales transaction details such as:
+
+- Transaction ID
+- Date
+- Product Category
+- Product Name
+- Units Sold
+- Unit Price
+- Total Revenue
+- Region
+- Payment Method
 
 ## Tools Used
+
 - MySQL Workbench
+- SQL
 
-## Operations Performed
-- Created database and table
-- Loaded dataset
-- Used YEAR() and MONTH() to group data
-- Calculated monthly revenue using SUM()
-- Counted unique orders using COUNT(DISTINCT)
-- Sorted results using ORDER BY
-- Retrieved Top 3 months by revenue
+## SQL Concepts Used
 
-## Files
-- task6.sql
-- Dataset
-- Results Screenshot
-- README.md# Task6
+The following SQL concepts were applied:
+
+- SELECT statements
+- Date extraction and conversion
+- EXTRACT()
+- YEAR() and MONTH()
+- GROUP BY
+- SUM()
+- COUNT(DISTINCT)
+- ORDER BY
+- WHERE clause
+
+## Analysis Performed
+
+### 1. Extract Month from Date
+
+Used `EXTRACT(MONTH FROM date)` logic to identify the month from transaction dates.
+
+Purpose:
+- Analyze sales based on monthly patterns.
+
+---
+
+### 2. Group Data by Year and Month
+
+Grouped transactions based on year and month.
+
+Purpose:
+- Understand monthly sales trends.
+
+---
+
+### 3. Calculate Total Revenue
+
+Used:
+
+```sql
+SUM(Total Revenue)
